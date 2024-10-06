@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 const saltRounds = 10;
 
-// REGISTRA NOVO USUÁRIO
+// REGISTER NEW USER
 export const register = async (req, res) => {
     const { name, email, password, cpf, phone, tipo_usuario } = req.body;
     try {
@@ -49,7 +49,7 @@ export const login = async (req, res) => {
     }
 };
 
-// Get all users (admin only)
+// GET ALL USERS
 export const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll();
@@ -60,7 +60,7 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
-// Get user by ID
+// GET USER BY ID
 export const getUserById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -75,7 +75,7 @@ export const getUserById = async (req, res) => {
     }
 };
 
-// Update user by ID
+// UPDATE USER
 export const updateUser = async (req, res) => {
     const { id } = req.params;
     const { name, email, phone, cpf } = req.body;
@@ -94,7 +94,7 @@ export const updateUser = async (req, res) => {
     }
 };
 
-// Delete user by ID
+// DELETE USER
 export const deleteUser = async (req, res) => {
     const { id } = req.params;
 

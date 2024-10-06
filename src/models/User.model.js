@@ -15,7 +15,7 @@ export const User = database.define('User',
         email: {
             type: DataTypes.STRING(255),
             allowNull: false,
-            unique: true // Adicionar unique para garantir que o email seja único
+            unique: true
         },
         password: {
             type: DataTypes.STRING(255),
@@ -33,7 +33,7 @@ export const User = database.define('User',
         }
     }, 
     {
-        tableName: 'User', // evitando pluralização
+        tableName: 'User',
         timestamps: true,
     }
 );

@@ -4,13 +4,13 @@ import authenticateJWT from '../middlewares/authenticateJWT.js';
 
 const router = express.Router();
 
-router.post('/register', register);
-router.post('/login', login);
+router.post('/register', register); // ROUTE TESTED
+router.post('/login', login); // ROUTE TESTED
 
-// ROTAS PROTEGIDAS (JWT token)
-router.get('/users', authenticateJWT, getAllUsers);  // ADMIN ONLY
-router.get('/users/:id', authenticateJWT, getUserById);  // Admin/User can access their own profile
-router.put('/users/:id', authenticateJWT, updateUser);   // Admin/User can update their profile
-router.delete('/users/:id', authenticateJWT, deleteUser); // Admin/User can delete their profile
+// PROTECTED ROUTES (JWT token)
+router.get('/users', authenticateJWT, getAllUsers);  // ADMIN ONLY, ROUTE TESTED
+router.get('/users/:id', authenticateJWT, getUserById);  // ROUTE TESTED
+router.put('/users/:id', authenticateJWT, updateUser);   // ROUTE TESTED
+router.delete('/users/:id', authenticateJWT, deleteUser); // ROUTE TESTED
 
 export default router;
