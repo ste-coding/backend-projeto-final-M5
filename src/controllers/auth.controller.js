@@ -8,7 +8,7 @@ User.sync()
 
 // REGISTER NEW USER
 export const register = async (req, res) => {
-    const { name, email, password, cpf, phone, tipo_usuario } = req.body;
+    const { name, email, password, cpf, phone, user_type } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         const newUser = await User.create({
@@ -17,7 +17,7 @@ export const register = async (req, res) => {
             password: hashedPassword,
             cpf,
             phone,
-            tipo_usuario,
+            user_type,
         });
 
         res.status(201).json({ message: 'User registered successfully', user: newUser });
