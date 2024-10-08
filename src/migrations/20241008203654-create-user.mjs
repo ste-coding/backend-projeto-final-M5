@@ -29,7 +29,7 @@ export default {
       phone: {
         type: DataTypes.CHAR(15),
       },
-      tipo_usuario: {
+      user_type: {
         type: DataTypes.ENUM('admin', 'regular'),
         allowNull: false,
       },
