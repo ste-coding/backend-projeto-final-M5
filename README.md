@@ -2,9 +2,90 @@
 
 ## Overview
 
-This API allows users to manage events, points, registrations, favorites, and user accounts. It includes authentication features for user registration and login, as well as protected routes for user management.
+This API enables users to manage events, points, registrations, favorites, and user accounts. It features authentication for user registration and login, as well as protected routes for user management, allowing for secure and efficient management of resources.
 
-## Base URL
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Features](#features)
+* [Technologies Used](#technologies-used)
+* [Project Structure](#project-structure)
+* [Data Modeling](#data-modeling)
+* [Project Setup](#project-setup)
+* [Endpoints](#endpoints)
+* [Developers](#developers)
+* [License](#license)
+
+## Introduction
+
+This API is designed to facilitate the management of events and resources related to waste collection and community engagement. Users can register, log in, create and manage events, as well as mark their favorite events and points.
+
+## Features
+
+- **User Management**: Register, login, and manage user accounts with role-based access (admin or regular user).
+- **Event Management**: Create, read, update, and delete events.
+- **Favorites Management**: Add and manage favorite events and points.
+- **Point Management**: Create and manage waste collection points.
+- **JWT Authentication**: Secure endpoints with JSON Web Tokens for protected access.
+- **Error Handling**: Standardized error responses for better debugging and user experience.
+
+## Technologies Used
+
+- **Node.js**: JavaScript runtime for server-side programming.
+- **Express**: Web framework for Node.js to build APIs.
+- **Sequelize**: ORM for PostgreSQL, simplifying database operations.
+- **JSON Web Tokens (JWT)**: For secure token-based authentication.
+- **Bcrypt**: For hashing passwords securely.
+- **Dotenv**: For managing environment variables.
+- **PostgreSQL**: Relational database for data storage.
+
+## Project Structure
+
+```plaintext
+├── src
+│   ├── config         # Configuration files
+│   ├── controllers    # API controllers
+│   ├── middlewares    # Middleware functions
+│   ├── migrations     # Sequelize migrations
+│   ├── models         # Sequelize models
+│   ├── routes         # API routes
+│   └── server.js      # Entry point for the application
+├── .env               # Environment variables
+├── .gitignore         # Git ignore file
+├── package.json       # Project metadata and dependencies
+└── README.md          # Documentation
+```
+
+## Data Modelling
+Link for ER Diagram
+
+## Project Setup
+1. Clone this repository:
+```bash
+git clone https://github.com/ste-coding/backend-projeto-final-M5.git
+cd backend-projeto-final-M5
+```
+
+2. Install the dependencies:
+```bash
+npm install
+```
+
+3. Create a .env file in the root of the project and define the environment variables as shown in `.env_EXAMPLE`:
+
+
+4. Run database migrations (assuming you have Sequelize CLI installed):
+```bash
+npm run migrate
+```
+
+5. Start the server:
+```bash
+npm run dev
+```
+
+## Endpoints
+Base URL
 
 `http://localhost:3000/api`
 
@@ -22,7 +103,7 @@ This API allows users to manage events, points, registrations, favorites, and us
     "password": "password123",
     "cpf": "12345678901",
     "phone": "1234567890",
-    "tipo_usuario": "regular" // or "admin"
+    "user_type": "regular" // or "admin"
   }
   ```
 
@@ -210,3 +291,31 @@ Authorization: Bearer <token>
 
 - **Endpoint:** `/points/:id`
 - **Method:** `DELETE`
+
+## Backend Developers🧑‍💻  <a name="backend-developers"></a>
+
+  <table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/ste-coding">
+        <img src="https://avatars.githubusercontent.com/u/83964857?v=4" width="115" alt="Stéphanie Cândido"/><br />
+        <sub><b>Stéphanie</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="">
+        <img src="" width="115" alt=""/><br />
+        <sub><b>Raissa</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="">
+        <img src="" width="115" alt=""/><br />
+        <sub><b>Matheus</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+## License  <a name="license"></a>
+This project is licensed by: [GNU GPL-3.0](https://github.com/ste-coding/backend-projeto-final-M5/blob/main/LICENSE)
