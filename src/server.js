@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from 'cors';
+import corsMiddleware from './middlewares/cors.middleware.js';
 import authRoutes from './routes/auth.routes.js';
 import eventRoutes from './routes/event.routes.js';
 import pointRoutes from './routes/point.routes.js';
@@ -10,8 +10,8 @@ import { initializeDatabase } from './config/sync.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(corsMiddleware);
 app.use(express.json());
-app.use(cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
