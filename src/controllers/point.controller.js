@@ -1,5 +1,7 @@
 import { Point } from '../models/Point.model.js';
 
+Point.sync()
+
 export const createPoint = async (req, res) => {
     try {
         const point = await Point.create(req.body);

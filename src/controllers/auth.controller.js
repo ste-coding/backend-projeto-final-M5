@@ -4,9 +4,11 @@ import jwt from 'jsonwebtoken';
 
 const saltRounds = 10;
 
+User.sync()
+
 // REGISTER NEW USER
 export const register = async (req, res) => {
-    const { name, email, password, cpf, phone, tipo_usuario } = req.body;
+    const { name, email, password, cpf, phone, user_type } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         const newUser = await User.create({
@@ -15,7 +17,7 @@ export const register = async (req, res) => {
             password: hashedPassword,
             cpf,
             phone,
-            tipo_usuario,
+            user_type,
         });
 
         res.status(201).json({ message: 'User registered successfully', user: newUser });
@@ -41,7 +43,11 @@ export const login = async (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
-        const token = jwt.sign({ user_id: user.user_id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign(
+            { user_id: user.user_id, email: user.email, user_type: user.user_type },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
         res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
         console.error(error);
