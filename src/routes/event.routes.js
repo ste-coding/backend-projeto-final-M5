@@ -6,13 +6,15 @@ import {
     updateEvent,
     deleteEvent
 } from '../controllers/event.controller.js';
+import authenticateJWT from '../middlewares/authenticateJWT.js';
+
 
 const router = express.Router();
 
-router.post('/', createEvent);
+router.post('/', authenticateJWT, createEvent);
 router.get('/', getEvents);
 router.get('/:id', getEventById);
-router.put('/:id', updateEvent);
-router.delete('/:id', deleteEvent);
+router.put('/:id', authenticateJWT, updateEvent);
+router.delete('/:id', authenticateJWT, deleteEvent);
 
 export default router;

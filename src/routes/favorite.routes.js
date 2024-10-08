@@ -6,13 +6,14 @@ import {
     updateFavorite,
     deleteFavorite
 } from '../controllers/favorite.controller.js';
+import authenticateJWT from '../middlewares/authenticateJWT.js';
 
 const router = express.Router();
 
-router.post('/', addFavorite);
-router.get('/', getFavorites);
-router.get('/:id', getFavoriteById);
-router.put('/:id', updateFavorite);
-router.delete('/:id', deleteFavorite);
+router.post('/', authenticateJWT, addFavorite);
+router.get('/', authenticateJWT, getFavorites);
+router.get('/:id', authenticateJWT, getFavoriteById);
+router.put('/:id', authenticateJWT, updateFavorite);
+router.delete('/:id', authenticateJWT, deleteFavorite);
 
 export default router;

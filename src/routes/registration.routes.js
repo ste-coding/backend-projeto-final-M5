@@ -6,13 +6,15 @@ import {
     updateRegistration,
     deleteRegistration
 } from '../controllers/registration.controller.js';
+import authenticateJWT from '../middlewares/authenticateJWT.js';
+
 
 const router = express.Router();
 
-router.post('/', createRegistration);
-router.get('/', getRegistrations);
-router.get('/:id', getRegistrationById);
-router.put('/:id', updateRegistration);
-router.delete('/:id', deleteRegistration);
+router.post('/', authenticateJWT, createRegistration);
+router.get('/', authenticateJWT, getRegistrations);
+router.get('/:id', authenticateJWT, getRegistrationById);
+router.put('/:id', authenticateJWT, updateRegistration);
+router.delete('/:id', authenticateJWT, deleteRegistration);
 
 export default router;
