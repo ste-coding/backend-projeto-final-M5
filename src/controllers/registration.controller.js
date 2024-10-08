@@ -1,5 +1,7 @@
 import { Registration } from '../models/Registration.model.js';
 
+Registration.sync()
+
 export const createRegistration = async (req, res) => {
     try {
         const registration = await Registration.create(req.body);

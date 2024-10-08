@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken';
 
 const saltRounds = 10;
 
+User.sync()
+
 // REGISTER NEW USER
 export const register = async (req, res) => {
     const { name, email, password, cpf, phone, tipo_usuario } = req.body;
