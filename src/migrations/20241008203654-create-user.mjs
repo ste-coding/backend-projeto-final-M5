@@ -32,6 +32,7 @@ export default {
       user_type: {
         type: DataTypes.ENUM('admin', 'regular'),
         allowNull: false,
+        defaultValue: 'regular',
       },
       createdAt: {
         type: DataTypes.DATE,
