@@ -8,7 +8,7 @@ import favoriteRoutes from './routes/favorite.routes.js';
 import { getReport } from './controllers/report.controller.js';
 import { initializeDatabase } from './config/sync.js';
 
-const app = express();
+export const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(corsMiddleware);

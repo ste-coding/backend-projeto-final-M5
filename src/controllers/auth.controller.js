@@ -84,7 +84,11 @@ export const getUserById = async (req, res) => {
 // UPDATE USER
 export const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { name, email, phone, cpf } = req.body;
+    const { name, email, phone, cpf, user_type } = req.body;
+
+    if (user_type && req.user && req.user.user_type !== 'admin') {
+      return res.status(403).json({ message: 'Access denied: admin privileges required' });
+    }
 
     try {
         const user = await User.findByPk(id);
