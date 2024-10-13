@@ -48,7 +48,7 @@ export const login = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
-        res.status(200).json({ message: 'Login successful', token });
+        res.status(200).json({ message: 'Login successful', token, user: { user_id: user.user_id,  name: user.name } });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error logging in' });
@@ -96,7 +96,7 @@ export const updateUser = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        await user.update({ name, email, phone, cpf });
+        await user.update({ name, email, phone, cpf, user_type });
         res.status(200).json({ message: 'User updated successfully', user });
     } catch (error) {
         console.error(error);
