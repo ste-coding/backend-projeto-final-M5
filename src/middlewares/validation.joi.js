@@ -4,8 +4,8 @@ const userSchema = Joi.object({
     name: Joi.string().min(3).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
-    cpf: Joi.string().length(11).allow(null), // se necessário
-    phone: Joi.string().length(15).allow(null), // se necessário
+    cpf: Joi.string().length(11).allow(null),
+    phone: Joi.string().length(15).allow(null),
     tipo_usuario: Joi.string().valid('admin', 'regular').required()
 });
 
