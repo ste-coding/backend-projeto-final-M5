@@ -30,6 +30,15 @@ export const getFavoriteById = async (req, res) => {
     }
 };
 
+export const getFavoritesByUserId = async (req, res) => {
+    try {
+        const favorites = await Favorite.findAll({ where: { user_id: req.params.id } });
+        res.status(200).json(favorites);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 export const updateFavorite = async (req, res) => {
     try {
         const [updated] = await Favorite.update(req.body, {

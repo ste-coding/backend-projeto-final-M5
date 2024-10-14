@@ -4,7 +4,9 @@ Event.sync()
 
 export const createEvent = async (req, res) => {
     try {
-        const event = await Event.create(req.body);
+        const { name, description, date, location, event_type, status } = req.body;
+        const created_by = req.user.user_id;
+        const event = await Event.create({ name, description, date, location, event_type, status, created_by });
         res.status(201).json(event);
     } catch (error) {
         res.status(500).json({ error: error.message });

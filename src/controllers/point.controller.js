@@ -4,7 +4,9 @@ Point.sync()
 
 export const createPoint = async (req, res) => {
     try {
-        const point = await Point.create(req.body);
+        const { name, location, waste_type, operating_hours, status } = req.body;
+        const created_by = req.user.user_id;
+        const point = await Point.create({ name, location, waste_type, operating_hours, status, created_by });
         res.status(201).json(point);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -25,6 +27,15 @@ export const getPointById = async (req, res) => {
         const point = await Point.findByPk(req.params.id);
         if (!point) return res.status(404).json({ error: 'Point not found' });
         res.status(200).json(point);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+export const getPointApproved = async (req, res) => {
+    try {
+        const points = await Point.findAll({ where: { status: 'approved' } });
+        res.status(200).json(points);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
