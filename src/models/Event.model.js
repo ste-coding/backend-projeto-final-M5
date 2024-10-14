@@ -30,6 +30,7 @@ export const Event = database.define('Event', {
     status: {
         type: DataTypes.ENUM('approved', 'pending', 'rejected'),
         allowNull: false,
+        defaultValue: 'pending'
     },
     created_by: {
         type: DataTypes.UUID, // FK

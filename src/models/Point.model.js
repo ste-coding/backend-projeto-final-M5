@@ -26,6 +26,7 @@ export const Point = database.define('Point', {
     status: {
         type: DataTypes.ENUM('approved', 'pending', 'rejected'),
         allowNull: false,
+        defaultValue: 'pending'
     },
     created_by: {
         type: DataTypes.UUID, // FK
