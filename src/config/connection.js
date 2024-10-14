@@ -10,5 +10,11 @@ export const database = new Sequelize(
         dialect: process.env.DB_DIALECT,
         port: process.env.DB_PORT || 5432,
         logging: false,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false 
+            }
+        }
     }
 );
